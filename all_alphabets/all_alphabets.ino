@@ -1,8 +1,8 @@
 
 // Working of All alphabets..
-int speed_cube=6;
+int layer_speed=500;
 int latchPin=13;
-int count=0;
+//int count=0;
 int level=7;
 int clockPin=12;
 int dataPin=11;
@@ -100,17 +100,22 @@ void loop() {
       else if (serialListener_temp==32){
       }
        
-  level=7-((int(count/(speed_cube)))%8);
-  for(int m=0;m<8;m++){
-    digitalWrite(latchPin,LOW);
-    controlmosfet(m);
-    displayleds(m,level,serialListener);
-    delay(1);
-    digitalWrite(latchPin,HIGH);
+  //level=7-((int(count/(speed_cube)))%8);
+  for(level=7;level>=0;level--){
+    for(int m=0;m<8;m++){
+      digitalWrite(latchPin,LOW);
+      controlmosfet(m);
+      displayleds(m,level,serialListener);
+      delay(1);
+      digitalWrite(latchPin,HIGH);
+    }
+    delay(later_speed);
   }
   
   
-  count=count+1;
+  }
+  
+  //count=count+1;
   // put your main code here, to run repeatedly:
 
 }
