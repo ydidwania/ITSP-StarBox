@@ -109,7 +109,7 @@ void loop() {
       delay(1);
       digitalWrite(latchPin,HIGH);
     }
-    delay(later_speed);
+    delay(layer_speed);
   }
   
   
